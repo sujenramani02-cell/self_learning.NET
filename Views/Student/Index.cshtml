@@ -1,0 +1,62 @@
+﻿
+@model List<StudentCourseRegistration.Models.Student>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<h2 class="page-title">Registered Students</h2>
+
+<div style="margin-bottom:20px">
+    <a asp-action="Create" class="btn">
+        + Register New Student
+    </a>
+</div>
+
+<div class="table-card">
+
+    @if (Model.Count == 0)
+    {
+        <h3>No Students Registered Yet!</h3>
+        <p>Please register a student to view the list.</p>
+    }
+    else
+    {
+        <table class="student-table">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Semester</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.Id</td>
+                        <td>@s.Name</td>
+                        <td>@s.Email</td>
+                        <td>@s.Course</td>
+                        <td>@s.Semester</td>
+
+                        <td>
+                            <a asp-action="Details"
+                               asp-route-id="@s.Id"
+                               class="btn">
+                                View
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+
+</div>

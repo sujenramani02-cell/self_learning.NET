@@ -1,0 +1,44 @@
+﻿@model StudentCourseRegistration.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="details-card">
+
+    <h2 class="page-title">Student Information</h2>
+
+    <div class="detail-item">
+        <strong>Student ID:</strong>
+        @Model.Id
+    </div>
+
+    <div class="detail-item">
+        <strong>Name:</strong>
+        @Model.Name
+    </div>
+
+    <div class="detail-item">
+        <strong>Email:</strong>
+        @Model.Email
+    </div>
+
+    <div class="detail-item">
+        <strong>Course:</strong>
+        @Model.Course
+    </div>
+
+    <div class="detail-item">
+        <strong>Semester:</strong>
+        @Model.Semester
+    </div>
+
+    <br />
+
+    <a asp-controller="Student"
+       asp-action="Index"
+       class="btn">
+        Back to Student List
+    </a>
+
+</div>

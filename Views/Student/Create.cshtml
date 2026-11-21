@@ -1,0 +1,71 @@
+﻿@model StudentCourseRegistration.Models.Student
+
+@{
+    ViewData["Title"] = "Student Registration";
+}
+
+<div class="form-card">
+
+    <h2 class="page-title">Student Registration</h2>
+
+    <form asp-controller="Student"
+          asp-action="Create"
+          method="post">
+
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <label>Student Name</label>
+            <input asp-for="Name" class="form-control"
+                   placeholder="Enter student name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Email Address</label>
+            <input asp-for="Email" class="form-control"
+                   placeholder="Enter email address" />
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Course</label>
+            <select asp-for="Course" class="form-control">
+                <option value="">Select Course</option>
+                <option>Computer Engineering</option>
+                <option>Information Technology</option>
+                <option>Mechanical Engineering</option>
+                <option>Civil Engineering</option>
+                <option>Electrical Engineering</option>
+            </select>
+            <span asp-validation-for="Course"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Semester</label>
+            <select asp-for="Semester" class="form-control">
+                <option value="">Select Semester</option>
+                @for (int i = 1; i <= 8; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <span asp-validation-for="Semester"></span>
+        </div>
+
+        <button type="submit" class="btn">
+            Register Student
+        </button>
+
+        <a asp-action="Index"
+           class="btn">
+            Back
+        </a>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
